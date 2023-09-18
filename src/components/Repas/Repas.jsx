@@ -8,10 +8,12 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import MealService from '../../Service/MealService';
 import Accordeon from '../Accordeon/Accordeon';
+import FavoriteButton from '../../components/favorites/FavoriteButton';
+import { QueryClient, QueryClientProvider } from "react-query";
 
 
 
-
+const client = new QueryClient();
 const mealService = new MealService();  
 
 const Repas = () => {
@@ -26,21 +28,26 @@ const Repas = () => {
   if (isError) return <div>Error: {error.message}</div>
 
   return (
+    <QueryClientProvider client={client}>
     <Container fluid className='text-center  flex flex-col justify-center items-center'>
+      
 
         <Link className=' text-red-400 mt-6 text-5xl font-bold  
          ' to='/'>
           Retour au menu d'accueil
           </Link>
-          
+          <Link className='text-3xl text-blue-400 bg-red-700 w-2/5 mx-auto' to="/favorites">Favorites</Link>
+         
+ 
         <Card className='my-5 mt-5 mx-auto'>
           <Col md={12}>
+            
             {data && data.meals.map(info =>
                 <Col key={info.idMeal}>
+                    <FavoriteButton meal={info} />
                   <Card.Title
                    className='text-3xl text-black'>{info.strMeal}
                   </Card.Title>
-
                   <Card.Text
                    className='text-3xl'>{info.strCategory}
                   </Card.Text>
@@ -51,6 +58,7 @@ const Repas = () => {
           </Col>
         </Card>
     </Container>
+     </QueryClientProvider>
   )
 }
 

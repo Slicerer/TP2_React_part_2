@@ -4,15 +4,19 @@ import ReactDOM from "react-dom/client";   //import { ReactDOM } from "react-dom
 import { BrowserRouter } from "react-router-dom"; //? définir des routes pour différents composants et gérer la navigation entre eux de manière réactive.
 import "bootstrap/dist/css/bootstrap.min.css";  //dist as distribution;
 import './index.css';
+import { Provider } from "react-redux";
+import store from './store/Store';
 
 
 // notes react querry  facilite la mise en cache des données, la gestion des requêtes réseau 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+       <Provider store={store}>
     <BrowserRouter>
     <App />
     </BrowserRouter>
+    </Provider>     
   </React.StrictMode>,
 );
 

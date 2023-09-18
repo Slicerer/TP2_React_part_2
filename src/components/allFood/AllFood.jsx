@@ -23,10 +23,13 @@ const AllFood = () => {
     if (isError) return <div>Error: {error.message}</div>
 
   return (
+    
     <Container fluid className='text-center'>
-        <Link className='text-4xl text-red-400' to='/'>Retour au livre de recette</Link>
+        <Link className='text-4xl text-blue-400' to='/'>Retour au livre de recette</Link>
+      
         <Card className='my-6 border-4 border-red-400 w-2/5 mx-auto'>
             <Col md={12}>
+            {/* <Link className='text-3xl text-red-400 bg-red-700 w-2/5 mx-auto' to="/favorites">Favorites</Link> */}
                 <Card.Title className=' py-3 text-4xl text-dark'>{params.name}</Card.Title>
                 <div className='py-4'>
                     {data && data.meals.map(meal =>
