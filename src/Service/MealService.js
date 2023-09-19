@@ -14,9 +14,7 @@ class MealService {
         return await res.json();
     };
 
- 
-
-    async getFood(menuCate) {          
+     async getFood(menuCate) {          
         const res = await fetch(`${this.baseUrl}${this.choixDeMeneu}${menuCate}`);
         if (!res.ok) throw new Error();
         return await res.json();
@@ -27,11 +25,6 @@ class MealService {
         if (!res.ok) throw new Error();
         return await res.json();
     }
-
-
-
-
-
 }
 
 export default MealService;

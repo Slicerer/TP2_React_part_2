@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { favoritesSelector } from './store/favoritesSelectors';
 import { removeFavorite } from './store/favoritesSlice'; // Assurez-vous d'importer les actions appropriées
+import { Link } from 'react-router-dom';
 
 const FavoritesPage = () => {
   const favorites = useSelector(favoritesSelector);
@@ -12,20 +13,27 @@ const FavoritesPage = () => {
   };
 
   return (
-    <div>
+    <div className='mx-auto w-3/5 bg-neutral-200'>
       <h1 className='text-blue-400 text-center my-6 text-4xl'>My Favorites</h1>
-      <ul>
+         
         {favorites.map((meal) => (
-          <li key={meal.idMeal}>
-            {meal.strMeal}
-            <button className='p-6 bg-slate-600 rounded-2xl' onClick={() => removeFromFavorites(meal)}>
+         
+          <li className='m-4' key={meal.idMeal}> {meal.strMeal} <br />
+          <Link className='bg-red-300 rounded-lg p-1 m-3' to={`/meals/${meal.idMeal}`}>{meal.strMeal}</Link>  <br />
+       
+            <button className='p-3 bg-red-600 rounded-2xl mt-3' onClick={() => removeFromFavorites(meal)}>
               Remove from Favorites
             </button>
           </li>
         ))}
-      </ul>
+    
     </div>
   );
 };
 
 export default FavoritesPage;
+
+
+
+
+

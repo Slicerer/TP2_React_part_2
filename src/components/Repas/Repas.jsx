@@ -11,8 +11,6 @@ import Accordeon from '../Accordeon/Accordeon';
 import FavoriteButton from '../../components/favorites/FavoriteButton';
 import { QueryClient, QueryClientProvider } from "react-query";
 
-
-
 const client = new QueryClient();
 const mealService = new MealService();  
 
@@ -23,8 +21,8 @@ const Repas = () => {
       queryKey: ['repas', params.id],
       queryFn: () => mealService.getRepas(params.id),
   });
-
-  if (isLoading) return <div>Loading</div>
+  
+    if (isLoading) return <div>Loading</div>
   if (isError) return <div>Error: {error.message}</div>
 
   return (

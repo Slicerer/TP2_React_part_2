@@ -5,15 +5,16 @@ import { favoritesSelector } from './store/favoritesSelectors';
 
 const FavoriteButton = ({ meal }) => {
   const dispatch = useDispatch();
-  const favorites = useSelector(favoritesSelector);
 
-  const isFavorite = favorites.filter((favorite) => favorite.url === meal.url).length > 0;
+  const favorites = useSelector(favoritesSelector);
+  const isFavorite = favorites.some((favorite) => favorite.idMeal === meal.idMeal);
+
 
   const onClick = () => {
     if (isFavorite) {
-      dispatch(removeFavorite(meal));
+      return dispatch(removeFavorite(meal));
     } else {
-      dispatch(addFavorite(meal));
+      return dispatch(addFavorite(meal));
     }
   };
 

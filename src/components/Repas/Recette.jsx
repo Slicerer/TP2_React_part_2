@@ -23,5 +23,4 @@ const Recette = ({ info }) => {
         </ul>
     );
 }
-
 export default Recette;
