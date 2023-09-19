@@ -20,10 +20,11 @@ const AllFoods = () => {
   return (
     <Container>
         <h1 className='text-5xl font-bold text-center  text-red-400'>Livre de recette</h1>
+   
   
         <Card className='my-6 bg-neutral-200 w-96 mx-auto'>
             <Card.Title className='text-3xl text-center py-5 fw-bold text-red-400'>Selectioné un catégorie</Card.Title>
-            {/* <Link className='text-center text-3xl text-black bg-red-700 w-2/5 mx-auto' to="/favorites">Favorites</Link> */}
+            <Link className='text-center text-3xl text-black bg-red-700 w-2/5 mx-auto' to="/favorites">Favorites</Link>
             <div className='my-2 '>
                 {data && data.categories.map(menuCate =>
                     <Link className='text-center ' to={`/categories/${menuCate.strCategory}`} key={menuCate.idCategory}>
